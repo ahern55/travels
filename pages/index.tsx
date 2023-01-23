@@ -32,6 +32,10 @@ const Home: NextPage = ({ images }: { images: ImageProps[] }) => {
 
   return (
     <>
+      <Head>
+        <title>Travels</title>
+        <meta property="og:title" content="Travels" key="title" />
+      </Head>
       <main className="mx-auto max-w-[1960px] p-4">
         {photoId && (
           <Modal
