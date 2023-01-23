@@ -74,9 +74,9 @@ const Home: NextPage = ({ images }: { images: ImageProps[] }) => {
           className="font-semibold hover:text-white"
           rel="noreferrer"
         >
-          jason.ahern
+          @jason.ahern
         </a>
-        , Email:{" "}
+        {/* , Email:{" "}
         <a
           href="mailto:jason.ahern53@gmail.com"
           target="_blank"
@@ -93,7 +93,7 @@ const Home: NextPage = ({ images }: { images: ImageProps[] }) => {
           rel="noreferrer"
         >
           jasonahern.com
-        </a>
+        </a> */}
       </footer>
     </>
   );
