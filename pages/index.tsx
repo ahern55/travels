@@ -67,34 +67,33 @@ const Home: NextPage = ({ images }: { images: ImageProps[] }) => {
         </div>
       </main>
       <footer className="p-6 text-center text-white/80 sm:p-12">
-        Thank you to{" "}
+        Instagram:{" "}
         <a
-          href="https://edelsonphotography.com/"
+          href="https://www.instagram.com/jason.ahern/"
           target="_blank"
           className="font-semibold hover:text-white"
           rel="noreferrer"
         >
-          Josh Edelson
+          jason.ahern
         </a>
-        ,{" "}
+        , Email:{" "}
         <a
-          href="https://www.newrevmedia.com/"
+          href="mailto:jason.ahern53@gmail.com"
           target="_blank"
           className="font-semibold hover:text-white"
           rel="noreferrer"
         >
-          Jenny Morgan
+          jason.ahern53@gmail.com
         </a>
-        , and{" "}
+        , Main Website: {""}
         <a
-          href="https://www.garysextonphotography.com/"
+          href="https://jasonahern.com"
           target="_blank"
           className="font-semibold hover:text-white"
           rel="noreferrer"
         >
-          Gary Sexton
-        </a>{" "}
-        for the pictures.
+          jasonahern.com
+        </a>
       </footer>
     </>
   );
