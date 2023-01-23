@@ -11,6 +11,9 @@ import cloudinary from "../utils/cloudinary";
 import getBase64ImageUrl from "../utils/generateBlurPlaceholder";
 import type { ImageProps } from "../utils/types";
 import { useLastViewedPhoto } from "../utils/useLastViewedPhoto";
+import InstagramIcon from "@mui/icons-material/Instagram";
+import MailOutlineIcon from "@mui/icons-material/MailOutline";
+import GitHubIcon from "@mui/icons-material/GitHub";
 
 const Home: NextPage = ({ images }: { images: ImageProps[] }) => {
   const router = useRouter();
@@ -38,7 +41,7 @@ const Home: NextPage = ({ images }: { images: ImageProps[] }) => {
             }}
           />
         )}
-        <div className="columns-2 gap-2 md:columns-3 lg:columns-4">
+        <div className="columns-3 gap-2 lg:columns-4">
           {images.map(({ id, public_id, format, blurDataUrl }) => (
             <Link
               key={id}
@@ -49,7 +52,7 @@ const Home: NextPage = ({ images }: { images: ImageProps[] }) => {
               className="after:content group relative mb-2 block w-full cursor-zoom-in after:pointer-events-none after:absolute after:inset-0 after:rounded-lg after:shadow-highlight"
             >
               <Image
-                alt="Picture from my travels:"
+                alt="Picture from my travels"
                 className="transform brightness-90 transition will-change-auto group-hover:brightness-110"
                 style={{ transform: "translate3d(0, 0, 0)" }}
                 placeholder="blur"
@@ -67,33 +70,32 @@ const Home: NextPage = ({ images }: { images: ImageProps[] }) => {
         </div>
       </main>
       <footer className="p-6 text-center text-white/80 sm:p-12">
-        Instagram:{" "}
         <a
           href="https://www.instagram.com/jason.ahern/"
           target="_blank"
           className="font-semibold hover:text-white"
           rel="noreferrer"
         >
-          @jason.ahern
+          <InstagramIcon />
         </a>
-        {/* , Email:{" "}
+        {"   "}
         <a
           href="mailto:jason.ahern53@gmail.com"
           target="_blank"
           className="font-semibold hover:text-white"
           rel="noreferrer"
         >
-          jason.ahern53@gmail.com
+          <MailOutlineIcon />
         </a>
-        , Main Website: {""}
+        {"   "}
         <a
-          href="https://jasonahern.com"
+          href="https://github.com/ahern55/"
           target="_blank"
           className="font-semibold hover:text-white"
           rel="noreferrer"
         >
-          jasonahern.com
-        </a> */}
+          <GitHubIcon />
+        </a>
       </footer>
     </>
   );
@@ -104,12 +106,13 @@ export default Home;
 export async function getStaticProps() {
   const results = await cloudinary.v2.search
     .expression(`folder:${process.env.CLOUDINARY_FOLDER}/*`)
-    .sort_by("public_id", "desc")
+    .sort_by("public_id", "asc")
     .max_results(400)
     .execute();
   let reducedResults: ImageProps[] = [];
 
   let i = 0;
+
   for (let result of results.resources) {
     reducedResults.push({
       id: i,
