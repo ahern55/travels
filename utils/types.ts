@@ -13,8 +13,8 @@ export interface SharedModalProps {
   images?: ImageProps[];
   currentPhoto?: ImageProps;
   changePhotoId: (newVal: number) => void;
-  imageLoaded: boolean;
-  setImageLoaded: () => void;
+  imageLoaded?: boolean;
+  setImageLoaded?: () => void;
   closeModal: () => void;
   navigation: boolean;
   direction?: number;
