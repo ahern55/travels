@@ -19,6 +19,7 @@ export default function Modal({
   const { photoId } = router.query;
   let index = Number(photoId);
 
+  const [imageLoaded, setImageLoaded] = useState(false);
   const [direction, setDirection] = useState(0);
   const [curIndex, setCurIndex] = useState(index);
 
@@ -28,6 +29,7 @@ export default function Modal({
   }
 
   function changePhotoId(newVal: number) {
+    setImageLoaded(false);
     if (newVal > index) {
       setDirection(1);
     } else {
@@ -76,6 +78,8 @@ export default function Modal({
         direction={direction}
         images={images}
         changePhotoId={changePhotoId}
+        imageLoaded={imageLoaded}
+        setImageLoaded={() => setImageLoaded(true)}
         closeModal={handleClose}
         navigation={true}
       />

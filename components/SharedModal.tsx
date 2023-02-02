@@ -21,20 +21,18 @@ export default function SharedModal({
   index,
   images,
   changePhotoId,
+  imageLoaded,
+  setImageLoaded,
   closeModal,
   navigation,
   currentPhoto,
   direction,
 }: SharedModalProps) {
-  const [loaded, setLoaded] = useState(false);
-
   let filteredImages = images?.filter((img: ImageProps) =>
     range(index - 15, index + 15).includes(img.id)
   );
 
   const switchPhoto = (photoId: number) => {
-    console.log("switching photo");
-    setLoaded(false);
     changePhotoId(photoId);
   };
 
@@ -68,6 +66,7 @@ export default function SharedModal({
         {/* Main image */}
         <div className="w-full overflow-hidden">
           <div className="relative flex aspect-[3/2] items-center justify-center">
+            {!imageLoaded && <CircularProgress size={"5rem"} />}
             <AnimatePresence initial={false} custom={direction}>
               <motion.div
                 key={index}
@@ -78,11 +77,6 @@ export default function SharedModal({
                 exit="exit"
                 className="absolute"
               >
-                {!loaded && (
-                  <div>
-                    <CircularProgress size={"5rem"} />
-                  </div>
-                )}
                 <Image
                   src={`https://res.cloudinary.com/${
                     process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME
@@ -94,10 +88,8 @@ export default function SharedModal({
                   priority
                   alt="Travel Image"
                   onLoadingComplete={() => {
-                    setTimeout(() => {
-                      console.log("loading complete");
-                      setLoaded(true);
-                    }, 0);
+                    console.log("loading complete");
+                    setImageLoaded();
                   }}
                 />
               </motion.div>
@@ -108,7 +100,7 @@ export default function SharedModal({
         {/* Buttons + bottom nav bar */}
         <div className="absolute inset-0 mx-auto flex max-w-7xl items-center justify-center">
           {/* Buttons */}
-          {loaded && (
+          {imageLoaded && (
             <div className="relative aspect-[3/2] max-h-full w-full">
               {navigation && (
                 <>
