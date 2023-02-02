@@ -83,8 +83,8 @@ export default function SharedModal({
                   }/image/upload/c_scale,${navigation ? "w_1280" : "w_1920"}/${
                     currentImage.public_id
                   }.${currentImage.format}`}
-                  width={navigation ? 1280 : 1920}
-                  height={navigation ? 853 : 1280}
+                  width={800}
+                  height={800}
                   priority
                   alt="Travel Image"
                   onLoadingComplete={() => {
