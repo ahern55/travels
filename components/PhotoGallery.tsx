@@ -3,7 +3,7 @@ import Image from "next/image";
 import { PhotoGalleryProps } from "../utils/types";
 import { useLastViewedPhoto } from "../utils/useLastViewedPhoto";
 import { useRouter } from "next/router";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Modal from "./Modal";
 
 export default function PhotoGallery({
@@ -11,34 +11,43 @@ export default function PhotoGallery({
   optimizeImages,
 }: PhotoGalleryProps) {
   const router = useRouter();
-  const { photoId } = router.query;
+  const [photoIndex, setPhotoIndex] = useState(0);
+  const [modalOpen, setModalOpen] = useState(false);
   const [lastViewedPhoto, setLastViewedPhoto] = useLastViewedPhoto();
 
-  useEffect(() => {
-    // This effect keeps track of the last viewed photo in the modal to keep the index page in sync when the user navigates back
-    if (lastViewedPhoto && !photoId) {
-      setLastViewedPhoto(null);
-    }
-  }, [photoId, lastViewedPhoto, setLastViewedPhoto]);
+  const openModal = (index: number) => {
+    setPhotoIndex(index);
+    setModalOpen(true);
+  };
+
+  // useEffect(() => {
+  //   // This effect keeps track of the last viewed photo in the modal to keep the index page in sync when the user navigates back
+  //   if (lastViewedPhoto && !photoId) {
+  //     setLastViewedPhoto(null);
+  //   }
+  // }, [photoId, lastViewedPhoto, setLastViewedPhoto]);
 
   return (
     <div className="mx-auto max-w-[1960px] p-4">
-      {photoId && (
+      {modalOpen && (
         <Modal
+          index={photoIndex}
           images={images}
           onClose={() => {
-            setLastViewedPhoto(photoId);
+            setModalOpen(false);
+            // setLastViewedPhoto(photoId);
           }}
         />
       )}
       <div className="columns-3 gap-2 lg:columns-4">
         {images.map(({ id, public_id, format, blurDataUrl }) => (
-          <Link
+          <div
             key={id}
-            href={`/?photoId=${id}`}
-            as={`/p/${id}`}
+            // href={`/?photoId=${id}`}
+            // as={`/p/${id}`}
+            onClick={() => openModal(id)}
             // ref={id === Number(lastViewedPhoto) ? lastViewedPhotoRef : null}
-            shallow
+            // shallow
             className="after:content group relative mb-2 block w-full cursor-zoom-in after:pointer-events-none after:absolute after:inset-0 after:rounded-lg after:shadow-highlight"
           >
             <Image
@@ -55,7 +64,7 @@ export default function PhotoGallery({
                   (max-width: 1536px) 33vw,
                   25vw"
             />
-          </Link>
+          </div>
         ))}
       </div>
     </div>
