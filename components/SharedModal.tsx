@@ -15,7 +15,6 @@ import { variants } from "../utils/animationVariants";
 import downloadPhoto from "../utils/downloadPhoto";
 import { range } from "../utils/range";
 import type { ImageProps, SharedModalProps } from "../utils/types";
-import Twitter from "./Icons/Twitter";
 
 export default function SharedModal({
   index,
@@ -60,11 +59,11 @@ export default function SharedModal({
       }}
     >
       <div
-        className="relative z-50 flex aspect-[3/2] w-full max-w-7xl items-center wide:h-full xl:taller-than-854:h-auto"
+        className="relative z-50 flex aspect-[3/2] h-full w-full max-w-7xl items-center wide:h-full"
         {...handlers}
       >
         {/* Main image */}
-        <div className="w-full overflow-hidden">
+        <div className="h-97 w-full overflow-hidden">
           <div className="relative flex aspect-[3/2] items-center justify-center">
             {!imageLoaded && <CircularProgress size={"5rem"} />}
             <AnimatePresence initial={false} custom={direction}>
@@ -87,10 +86,7 @@ export default function SharedModal({
                   height={800}
                   priority
                   alt="Travel Image"
-                  onLoadingComplete={() => {
-                    console.log("loading complete");
-                    setImageLoaded();
-                  }}
+                  onLoadingComplete={setImageLoaded}
                 />
               </motion.div>
             </AnimatePresence>
@@ -142,9 +138,7 @@ export default function SharedModal({
                     target="_blank"
                     title="Open fullsize version"
                     rel="noreferrer"
-                  >
-                    <Twitter className="h-5 w-5" />
-                  </a>
+                  ></a>
                 )}
                 <button
                   onClick={() =>

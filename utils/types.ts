@@ -19,3 +19,8 @@ export interface SharedModalProps {
   navigation: boolean;
   direction?: number;
 }
+
+export interface PhotoGalleryProps {
+  images: ImageProps[];
+  unoptimized: boolean;
+}

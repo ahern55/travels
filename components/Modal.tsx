@@ -8,23 +8,20 @@ import SharedModal from "./SharedModal";
 
 export default function Modal({
   images,
+  index,
   onClose,
 }: {
   images: ImageProps[];
+  index: number;
   onClose?: () => void;
 }) {
   let overlayRef = useRef();
-  const router = useRouter();
-
-  const { photoId } = router.query;
-  let index = Number(photoId);
 
   const [imageLoaded, setImageLoaded] = useState(false);
   const [direction, setDirection] = useState(0);
   const [curIndex, setCurIndex] = useState(index);
 
   function handleClose() {
-    router.push("/", undefined, { shallow: true });
     onClose();
   }
 
@@ -36,13 +33,6 @@ export default function Modal({
       setDirection(-1);
     }
     setCurIndex(newVal);
-    router.push(
-      {
-        query: { photoId: newVal },
-      },
-      `/p/${newVal}`,
-      { shallow: true }
-    );
   }
 
   useKeypress("ArrowRight", () => {
