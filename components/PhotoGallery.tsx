@@ -1,31 +1,19 @@
-import Link from "next/link";
 import Image from "next/image";
+import { useState } from "react";
 import { PhotoGalleryProps } from "../utils/types";
-import { useLastViewedPhoto } from "../utils/useLastViewedPhoto";
-import { useRouter } from "next/router";
-import { useEffect, useRef, useState } from "react";
 import Modal from "./Modal";
 
 export default function PhotoGallery({
   images,
-  optimizeImages,
+  unoptimized,
 }: PhotoGalleryProps) {
-  const router = useRouter();
   const [photoIndex, setPhotoIndex] = useState(0);
   const [modalOpen, setModalOpen] = useState(false);
-  const [lastViewedPhoto, setLastViewedPhoto] = useLastViewedPhoto();
 
   const openModal = (index: number) => {
     setPhotoIndex(index);
     setModalOpen(true);
   };
-
-  // useEffect(() => {
-  //   // This effect keeps track of the last viewed photo in the modal to keep the index page in sync when the user navigates back
-  //   if (lastViewedPhoto && !photoId) {
-  //     setLastViewedPhoto(null);
-  //   }
-  // }, [photoId, lastViewedPhoto, setLastViewedPhoto]);
 
   return (
     <div className="mx-auto max-w-[1960px] p-4">
@@ -35,7 +23,6 @@ export default function PhotoGallery({
           images={images}
           onClose={() => {
             setModalOpen(false);
-            // setLastViewedPhoto(photoId);
           }}
         />
       )}
@@ -43,11 +30,7 @@ export default function PhotoGallery({
         {images.map(({ id, public_id, format, blurDataUrl }) => (
           <div
             key={id}
-            // href={`/?photoId=${id}`}
-            // as={`/p/${id}`}
             onClick={() => openModal(id)}
-            // ref={id === Number(lastViewedPhoto) ? lastViewedPhotoRef : null}
-            // shallow
             className="after:content group relative mb-2 block w-full cursor-zoom-in after:pointer-events-none after:absolute after:inset-0 after:rounded-lg after:shadow-highlight"
           >
             <Image
@@ -56,6 +39,7 @@ export default function PhotoGallery({
               style={{ transform: "translate3d(0, 0, 0)" }}
               placeholder="blur"
               blurDataURL={blurDataUrl}
+              unoptimized={unoptimized}
               src={`https://res.cloudinary.com/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload/c_scale,w_720/${public_id}.${format}`}
               width={720}
               height={700}

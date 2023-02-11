@@ -1,6 +1,3 @@
-const visitedCountries = [
-  'japan',
-  'korea'
-]
+const visitedCountries = ["japan", "korea"];
 
-export default visitedCountries
+export default visitedCountries;

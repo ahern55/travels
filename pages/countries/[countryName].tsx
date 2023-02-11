@@ -17,7 +17,7 @@ const CountryGallery: NextPage = ({ images }: { images: ImageProps[] }) => {
         <title>{capitalizeWordFirstLetter(countryName as string)}</title>
       </Head>
       <main>
-        <PhotoGallery images={images} optimizeImages={false} />
+        <PhotoGallery images={images} unoptimized />
       </main>
     </>
   );

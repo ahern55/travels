@@ -17,7 +17,7 @@ const Home: NextPage = ({ images }: { images: ImageProps[] }) => {
         <meta property="og:title" content="Travels" key="title" />
       </Head>
       <main>
-        <PhotoGallery images={images} optimizeImages />
+        <PhotoGallery images={images} unoptimized={false} />
       </main>
       <Footer />
     </>

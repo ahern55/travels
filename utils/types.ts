@@ -22,5 +22,5 @@ export interface SharedModalProps {
 
 export interface PhotoGalleryProps {
   images: ImageProps[];
-  optimizeImages: boolean;
+  unoptimized: boolean;
 }
