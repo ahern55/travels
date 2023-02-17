@@ -9,12 +9,12 @@ import {
 import { CircularProgress } from "@mui/material";
 import { AnimatePresence, motion, MotionConfig } from "framer-motion";
 import Image from "next/image";
-import { useState } from "react";
 import { useSwipeable } from "react-swipeable";
 import { variants } from "../utils/animationVariants";
 import downloadPhoto from "../utils/downloadPhoto";
 import { range } from "../utils/range";
 import type { ImageProps, SharedModalProps } from "../utils/types";
+import useKeypress from "react-use-keypress";
 
 export default function SharedModal({
   index,
@@ -47,6 +47,18 @@ export default function SharedModal({
       }
     },
     trackMouse: true,
+  });
+
+  useKeypress("ArrowRight", () => {
+    if (index + 1 < images.length) {
+      changePhotoId(index + 1);
+    }
+  });
+
+  useKeypress("ArrowLeft", () => {
+    if (index > 0) {
+      changePhotoId(index - 1);
+    }
   });
 
   let currentImage = images ? images[index] : currentPhoto;
