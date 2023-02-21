@@ -47,15 +47,15 @@ export default function NavigationSpeedDial() {
         right: 5,
       }}
     >
-      <CircularProgress
-        hidden={!loadingBarVisible}
+      {/* <CircularProgress
+        hidden={true}
         size={"4rem"}
         sx={{
           position: "absolute",
           bottom: 11,
           right: 20,
         }}
-      />
+      /> */}
       <SpeedDial
         ariaLabel="Navigation"
         sx={{
