@@ -48,7 +48,7 @@ export default function NavigationSpeedDial() {
       }}
     >
       <CircularProgress
-        hidden={!loadingBarVisible}
+        hidden={true}
         size={"4rem"}
         sx={{
           position: "absolute",
