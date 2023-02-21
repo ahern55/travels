@@ -6,6 +6,8 @@ import visitedCountries from "../../data/visitedCountries";
 import { getReducedImagesForPhotoGalleryFromPath } from "../../utils/cloudinary";
 import { capitalizeWordFirstLetter } from "../../utils/genericUtils";
 import { ImageProps } from "../../utils/types";
+import Footer from "../../components/Footer";
+import SpeedDialNavigation from "../../components/NavigationSpeedDial";
 
 const CountryGallery: NextPage = ({ images }: { images: ImageProps[] }) => {
   const router = useRouter();
@@ -19,6 +21,8 @@ const CountryGallery: NextPage = ({ images }: { images: ImageProps[] }) => {
       <main>
         <PhotoGallery images={images} unoptimized />
       </main>
+      <SpeedDialNavigation />
+      <Footer />
     </>
   );
 };
@@ -35,7 +39,7 @@ export async function getStaticProps({ params }) {
 
 export async function getStaticPaths() {
   const fullPaths = visitedCountries.map((country) => ({
-    params: { countryName: country },
+    params: { countryName: country.name },
   }));
 
   return {
