@@ -47,7 +47,7 @@ export default function NavigationSpeedDial() {
         right: 5,
       }}
     >
-      <CircularProgress
+      {/* <CircularProgress
         hidden={true}
         size={"4rem"}
         sx={{
@@ -55,7 +55,7 @@ export default function NavigationSpeedDial() {
           bottom: 11,
           right: 20,
         }}
-      />
+      /> */}
       <SpeedDial
         ariaLabel="Navigation"
         sx={{
