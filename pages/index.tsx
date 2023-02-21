@@ -8,6 +8,7 @@ import getBase64ImageUrl from "../utils/generateBlurPlaceholder";
 import type { ImageProps } from "../utils/types";
 import PhotoGallery from "../components/PhotoGallery";
 import Footer from "../components/Footer";
+import SpeedDialNavigation from "../components/NavigationSpeedDial";
 
 const Home: NextPage = ({ images }: { images: ImageProps[] }) => {
   return (
@@ -19,6 +20,7 @@ const Home: NextPage = ({ images }: { images: ImageProps[] }) => {
       <main>
         <PhotoGallery images={images} unoptimized={false} />
       </main>
+      <SpeedDialNavigation />
       <Footer />
     </>
   );
