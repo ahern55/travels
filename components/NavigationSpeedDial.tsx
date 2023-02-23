@@ -5,7 +5,7 @@ import SpeedDialAction from "@mui/material/SpeedDialAction";
 import visitedCountries from "../data/visitedCountries";
 import { capitalizeWordFirstLetter } from "../utils/genericUtils";
 import { useRouter } from "next/router";
-import { CircularProgress, SxProps } from "@mui/material";
+import { SxProps } from "@mui/material";
 import { useEffect, useState } from "react";
 
 const actions = [

@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { useState } from "react";
+import { getImageSource } from "../utils/images/imagesService";
 import { PhotoGalleryProps } from "../utils/types";
 import Modal from "./Modal";
 
@@ -40,7 +41,7 @@ export default function PhotoGallery({
               placeholder="blur"
               blurDataURL={blurDataUrl}
               unoptimized={unoptimized}
-              src={`https://res.cloudinary.com/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload/c_scale,w_720/${public_id}.${format}`}
+              src={getImageSource(public_id, format)}
               width={720}
               height={700}
               sizes="(max-width: 640px) 100vw,

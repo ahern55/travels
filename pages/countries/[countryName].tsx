@@ -3,11 +3,11 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import PhotoGallery from "../../components/PhotoGallery";
 import visitedCountries from "../../data/visitedCountries";
-import { getReducedImagesForPhotoGalleryFromPath } from "../../utils/cloudinary";
 import { capitalizeWordFirstLetter } from "../../utils/genericUtils";
 import { ImageProps } from "../../utils/types";
 import Footer from "../../components/Footer";
 import SpeedDialNavigation from "../../components/NavigationSpeedDial";
+import { getReducedImagesFromPath } from "../../utils/images/imagesService";
 
 const CountryGallery: NextPage = ({ images }: { images: ImageProps[] }) => {
   const router = useRouter();
@@ -32,7 +32,7 @@ export default CountryGallery;
 export async function getStaticProps({ params }) {
   return {
     props: {
-      images: await getReducedImagesForPhotoGalleryFromPath(params.countryName),
+      images: await getReducedImagesFromPath(params.countryName),
     },
   };
 }
