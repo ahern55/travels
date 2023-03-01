@@ -16,6 +16,10 @@ const visitedCountries: countryData[] = [
     name: "taiwan",
     icon: "🇹🇼",
   },
+  {
+    name: "vietnam",
+    icon: "🇻🇳"
+  }
 ];
 
 export default visitedCountries;
