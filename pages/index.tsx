@@ -1,14 +1,10 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import cloudinary, {
-  getImagesFromPath,
-  getReducedImagesForPhotoGalleryFromPath,
-} from "../utils/cloudinary";
-import getBase64ImageUrl from "../utils/generateBlurPlaceholder";
 import type { ImageProps } from "../utils/types";
 import PhotoGallery from "../components/PhotoGallery";
 import Footer from "../components/Footer";
 import SpeedDialNavigation from "../components/NavigationSpeedDial";
+import { getReducedImagesFromPath } from "../utils/images/imagesService";
 
 const Home: NextPage = ({ images }: { images: ImageProps[] }) => {
   return (
@@ -31,7 +27,7 @@ export default Home;
 export async function getStaticProps() {
   return {
     props: {
-      images: await getReducedImagesForPhotoGalleryFromPath(),
+      images: await getReducedImagesFromPath(),
     },
   };
 }

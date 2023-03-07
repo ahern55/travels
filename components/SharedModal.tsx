@@ -11,7 +11,7 @@ import { AnimatePresence, motion, MotionConfig } from "framer-motion";
 import Image from "next/image";
 import { useSwipeable } from "react-swipeable";
 import { variants } from "../utils/animationVariants";
-import downloadPhoto from "../utils/downloadPhoto";
+import downloadPhoto from "../utils/images/downloadPhoto";
 import { range } from "../utils/range";
 import type { ImageProps, SharedModalProps } from "../utils/types";
 import useKeypress from "react-use-keypress";
