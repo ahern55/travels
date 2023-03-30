@@ -19,6 +19,10 @@ const visitedCountries: countryData[] = [
   {
     name: "vietnam",
     icon: "🇻🇳"
+  },
+  {
+    name: "cambodia",
+    icon: "🇰🇭"
   }
 ];
 
