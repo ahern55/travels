@@ -7,7 +7,7 @@ import { capitalizeWordFirstLetter } from "../../utils/genericUtils";
 import { ImageProps } from "../../utils/types";
 import Footer from "../../components/Footer";
 import SpeedDialNavigation from "../../components/NavigationSpeedDial";
-import { getReducedImagesFromPath } from "../../utils/images/imagesService";
+import { getImagesFromPath } from "../../utils/images/imagesService";
 
 const CountryGallery: NextPage = ({ images }: { images: ImageProps[] }) => {
   const router = useRouter();
@@ -32,7 +32,7 @@ export default CountryGallery;
 export async function getStaticProps({ params }) {
   return {
     props: {
-      images: await getReducedImagesFromPath(params.countryName),
+      images: await getImagesFromPath(params.countryName),
     },
   };
 }

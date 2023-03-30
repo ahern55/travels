@@ -11,18 +11,29 @@ cloudinary.config({
   secure: true,
 });
 
-const getImagesFromPathCloudinary = async (path?: string) => {
-  return await cloudinary.v2.search
+export const getImagesFromPathCloudinary = async (path?: string) => {
+  const result = await cloudinary.v2.search
     .expression(
       `folder:${process.env.CLOUDINARY_FOLDER}${path ? `/${path}` : ""}/*`
     )
     .sort_by("public_id", "asc")
     .max_results(400)
     .execute();
+
+  return getReducedImagesFromCloudinaryResults(result);
 };
 
-export const getReducedImagesFromPathCloudinary = async (path?: string) => {
-  const results = await getImagesFromPathCloudinary(path);
+export const getImagesWithTagCloudinary = async (tag: string) => {
+  const result = await cloudinary.v2.search
+    .expression(`folder:${process.env.CLOUDINARY_FOLDER}/* AND tags=${tag}`)
+    .sort_by("public_id", "asc")
+    .max_results(400)
+    .execute();
+
+  return getReducedImagesFromCloudinaryResults(result);
+};
+
+const getReducedImagesFromCloudinaryResults = async (results: any) => {
   let reducedResults: ImageProps[] = [];
 
   let i = 0;
