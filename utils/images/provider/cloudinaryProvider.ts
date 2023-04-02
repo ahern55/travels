@@ -26,7 +26,7 @@ export const getImagesFromPathCloudinary = async (path?: string) => {
 export const getImagesWithTagCloudinary = async (tag: string) => {
   const result = await cloudinary.v2.search
     .expression(`folder:${process.env.CLOUDINARY_FOLDER}/* AND tags=${tag}`)
-    .sort_by("public_id", "asc")
+    .sort_by("created_at", "asc")
     .max_results(400)
     .execute();
 
