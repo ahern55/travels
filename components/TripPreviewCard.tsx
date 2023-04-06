@@ -8,10 +8,10 @@ import { tripData } from "../data/trips";
 import { capitalizeWordFirstLetter } from "../utils/genericUtils";
 
 declare type TripCardProps = {
-  country: tripData;
+  trip: tripData;
 };
 
-export default function TripCard({ country }: TripCardProps) {
+export default function TripPreviewCard({ trip }: TripCardProps) {
   return (
     <Card sx={{ display: "flex", background: "gray", m: ".5rem" }}>
       <CardMedia
@@ -23,7 +23,7 @@ export default function TripCard({ country }: TripCardProps) {
       <Box sx={{ display: "flex", flexDirection: "column" }}>
         <CardContent sx={{ flex: "1 0 auto" }}>
           <Typography component="div" variant="h5">
-            {capitalizeWordFirstLetter(country.name)}
+            {capitalizeWordFirstLetter(trip.name)}
           </Typography>
           <Typography
             variant="subtitle1"

@@ -2,9 +2,10 @@ import { NextPage } from "next";
 import Head from "next/head";
 import Footer from "../../components/Footer";
 import trips from "../../data/trips";
-import CountryCard from "../../components/CountryCard";
+import TripPreviewCard from "../../components/TripPreviewCard";
 import Box from "@mui/material/Box";
 import { Grid } from "@mui/material";
+import Link from "next/link";
 
 const CountryGallery: NextPage = () => {
   return (
@@ -15,9 +16,11 @@ const CountryGallery: NextPage = () => {
       <main>
         <Box sx={{ display: "flex", alignItems: "center", pl: 1, pb: 1 }}>
           <Grid container spacing={0}>
-            {trips.map((country) => (
+            {trips.map((trip) => (
               <Grid item xs={12} md={6}>
-                <CountryCard country={country} />
+                <Link href={`/trips/${trip.name}`}>
+                  <TripPreviewCard trip={trip} />
+                </Link>
               </Grid>
             ))}
           </Grid>
