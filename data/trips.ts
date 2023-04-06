@@ -1,9 +1,9 @@
-export declare type countryData = {
+export declare type tripData = {
   name: string;
   icon: string;
 };
 
-const visitedCountries: countryData[] = [
+const trips: tripData[] = [
   {
     name: "japan",
     icon: "🇯🇵",
@@ -26,4 +26,4 @@ const visitedCountries: countryData[] = [
   },
 ];
 
-export default visitedCountries;
+export default trips;

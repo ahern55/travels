@@ -2,7 +2,7 @@ import * as React from "react";
 import Box from "@mui/material/Box";
 import SpeedDial from "@mui/material/SpeedDial";
 import SpeedDialAction from "@mui/material/SpeedDialAction";
-import visitedCountries from "../data/visitedCountries";
+import visitedCountries from "../data/trips";
 import { capitalizeWordFirstLetter } from "../utils/genericUtils";
 import { useRouter } from "next/router";
 import { SxProps } from "@mui/material";
