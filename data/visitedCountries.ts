@@ -1,4 +1,4 @@
-declare type countryData = {
+export declare type countryData = {
   name: string;
   icon: string;
 };
@@ -18,12 +18,12 @@ const visitedCountries: countryData[] = [
   },
   {
     name: "vietnam",
-    icon: "🇻🇳"
+    icon: "🇻🇳",
   },
   {
     name: "cambodia",
-    icon: "🇰🇭"
-  }
+    icon: "🇰🇭",
+  },
 ];
 
 export default visitedCountries;
