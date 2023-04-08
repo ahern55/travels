@@ -2,11 +2,8 @@ import * as React from "react";
 import Box from "@mui/material/Box";
 import SpeedDial from "@mui/material/SpeedDial";
 import SpeedDialAction from "@mui/material/SpeedDialAction";
-import visitedCountries from "../data/trips";
-import { capitalizeWordFirstLetter } from "../utils/genericUtils";
 import { useRouter } from "next/router";
 import { SxProps } from "@mui/material";
-import { useEffect, useState } from "react";
 
 const actions = [
   {
@@ -14,11 +11,11 @@ const actions = [
     name: "Home",
     route: "/",
   },
-  ...visitedCountries.map((country) => ({
-    icon: country.icon,
-    name: capitalizeWordFirstLetter(country.name),
-    route: `/countries/${country.name}`,
-  })),
+  {
+    icon: "📍",
+    name: "Trips",
+    route: "/trips",
+  },
 ];
 
 const speedDialStyleProps: SxProps = {
@@ -32,11 +29,6 @@ const speedDialStyleProps: SxProps = {
 
 export default function NavigationSpeedDial() {
   const router = useRouter();
-  const [loadingBarVisible, setLoadingBarVisible] = useState(false);
-
-  useEffect(() => {
-    setLoadingBarVisible(false);
-  }, [router.query]);
 
   return (
     <Box
@@ -47,15 +39,6 @@ export default function NavigationSpeedDial() {
         right: 5,
       }}
     >
-      {/* <CircularProgress
-        hidden={true}
-        size={"4rem"}
-        sx={{
-          position: "absolute",
-          bottom: 11,
-          right: 20,
-        }}
-      /> */}
       <SpeedDial
         ariaLabel="Navigation"
         sx={{
@@ -78,7 +61,6 @@ export default function NavigationSpeedDial() {
             }}
             onClick={() => {
               router.push(action.route);
-              setLoadingBarVisible(true);
             }}
           />
         ))}

@@ -3,7 +3,7 @@ import Head from "next/head";
 import type { ImageProps } from "../utils/types";
 import PhotoGallery from "../components/PhotoGallery";
 import Footer from "../components/Footer";
-import SpeedDialNavigation from "../components/NavigationSpeedDial";
+import NavigationSpeedDial from "../components/NavigationSpeedDial";
 import { getFavoriteImages } from "../utils/images/imagesService";
 
 const Home: NextPage = ({ images }: { images: ImageProps[] }) => {
@@ -16,7 +16,7 @@ const Home: NextPage = ({ images }: { images: ImageProps[] }) => {
       <main>
         <PhotoGallery images={images} unoptimized={false} />
       </main>
-      <SpeedDialNavigation />
+      <NavigationSpeedDial />
       <Footer />
     </>
   );

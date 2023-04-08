@@ -6,7 +6,7 @@ import visitedCountries from "../../data/trips";
 import { capitalizeWordFirstLetter } from "../../utils/genericUtils";
 import { ImageProps } from "../../utils/types";
 import Footer from "../../components/Footer";
-import SpeedDialNavigation from "../../components/NavigationSpeedDial";
+import NavigationSpeedDial from "../../components/NavigationSpeedDial";
 import { getImagesFromPath } from "../../utils/images/imagesService";
 
 const TripGallery: NextPage = ({ images }: { images: ImageProps[] }) => {
@@ -21,7 +21,7 @@ const TripGallery: NextPage = ({ images }: { images: ImageProps[] }) => {
       <main>
         <PhotoGallery images={images} unoptimized />
       </main>
-      <SpeedDialNavigation />
+      <NavigationSpeedDial />
       <Footer />
     </>
   );

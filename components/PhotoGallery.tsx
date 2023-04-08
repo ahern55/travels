@@ -1,6 +1,5 @@
 import Image from "next/image";
 import { useState } from "react";
-import { getImageSource } from "../utils/images/imagesService";
 import { PhotoGalleryProps } from "../utils/types";
 import Modal from "./Modal";
 

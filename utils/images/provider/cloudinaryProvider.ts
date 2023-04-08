@@ -23,9 +23,16 @@ export const getImagesFromPathCloudinary = async (path?: string) => {
   return getReducedImagesFromCloudinaryResults(result);
 };
 
-export const getImagesWithTagCloudinary = async (tag: string) => {
+export const getImagesWithTagCloudinary = async (
+  tag: string,
+  path?: string
+) => {
   const result = await cloudinary.v2.search
-    .expression(`folder:${process.env.CLOUDINARY_FOLDER}/* AND tags=${tag}`)
+    .expression(
+      `folder:${process.env.CLOUDINARY_FOLDER}${
+        path ? `/${path}` : ""
+      }/* AND tags=${tag}`
+    )
     .sort_by("created_at", "asc")
     .max_results(400)
     .execute();
