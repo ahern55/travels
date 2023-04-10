@@ -2,44 +2,44 @@ import { NextPage } from "next";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import PhotoGallery from "../../components/PhotoGallery";
-import visitedCountries from "../../data/visitedCountries";
+import visitedCountries from "../../data/trips";
 import { capitalizeWordFirstLetter } from "../../utils/genericUtils";
 import { ImageProps } from "../../utils/types";
 import Footer from "../../components/Footer";
-import SpeedDialNavigation from "../../components/NavigationSpeedDial";
+import NavigationSpeedDial from "../../components/NavigationSpeedDial";
 import { getImagesFromPath } from "../../utils/images/imagesService";
 
-const CountryGallery: NextPage = ({ images }: { images: ImageProps[] }) => {
+const TripGallery: NextPage = ({ images }: { images: ImageProps[] }) => {
   const router = useRouter();
-  const { countryName } = router.query;
+  const { tripName } = router.query;
 
   return (
     <>
       <Head>
-        <title>{capitalizeWordFirstLetter(countryName as string)}</title>
+        <title>{capitalizeWordFirstLetter(tripName as string)}</title>
       </Head>
       <main>
         <PhotoGallery images={images} unoptimized />
       </main>
-      <SpeedDialNavigation />
+      <NavigationSpeedDial />
       <Footer />
     </>
   );
 };
 
-export default CountryGallery;
+export default TripGallery;
 
 export async function getStaticProps({ params }) {
   return {
     props: {
-      images: await getImagesFromPath(params.countryName),
+      images: await getImagesFromPath(params.tripName),
     },
   };
 }
 
 export async function getStaticPaths() {
-  const fullPaths = visitedCountries.map((country) => ({
-    params: { countryName: country.name },
+  const fullPaths = visitedCountries.map((trip) => ({
+    params: { tripName: trip.name },
   }));
 
   return {
