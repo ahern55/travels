@@ -45,24 +45,22 @@ export default function TripPreviewCard({ trip, thumbnail }: TripCardProps) {
         src={getImageSource(thumbnail.public_id, thumbnail.format)}
         alt="thumbnail"
         width={150}
-        height={10}
+        height={1}
       />
       <Box sx={{ display: "flex", flexDirection: "column" }}>
-        <CardContent sx={{ flex: "1 0 auto" }}>
-          <Grid container>
-            <Grid item xs={12}>
-              <Typography component="div" variant="h6" color="white">
-                {capitalizeWordFirstLetter(trip.name)} {trip.icon}
-              </Typography>
-            </Grid>
-            <Grid item xs={12}>
-              <Typography component="div" variant="h6" color="white">
-                {formatDate(trip.startDate)} →{" "}
-                {trip.endDate ? formatDate(trip.endDate) : "Present"}
-              </Typography>
-            </Grid>
+        <Grid container p={0.5} pl={2}>
+          <Grid item xs={12}>
+            <Typography component="div" variant="h6" color="white">
+              {capitalizeWordFirstLetter(trip.name)} {trip.icon}
+            </Typography>
           </Grid>
-        </CardContent>
+          <Grid item xs={12}>
+            <Typography component="div" variant="h6" color="white">
+              {formatDate(trip.startDate)} →{" "}
+              {trip.endDate ? formatDate(trip.endDate) : "Present"}
+            </Typography>
+          </Grid>
+        </Grid>
       </Box>
     </Card>
   );
