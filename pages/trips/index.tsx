@@ -7,13 +7,13 @@ import { Grid } from "@mui/material";
 import Link from "next/link";
 import NavigationSpeedDial from "../../components/NavigationSpeedDial";
 import { ImageProps } from "../../utils/types";
-import trips from "../../data/trips";
+import trips, { tripData } from "../../data/trips";
 import { getTripThumbnail } from "../../utils/images/imagesService";
 
 const TripsOverviewPage: NextPage = ({
   trips,
 }: {
-  trips: { name: string; thumbnail: ImageProps }[];
+  trips: { tripData: tripData; thumbnail: ImageProps }[];
 }) => {
   return (
     <>
@@ -23,12 +23,12 @@ const TripsOverviewPage: NextPage = ({
       <main>
         <Box sx={{ display: "flex", alignItems: "center", p: 2, pb: 10 }}>
           <Grid container spacing={0}>
-            {trips.map((trip) => (
-              <Grid item xs={12} md={6} key={trip.name}>
-                <Link href={`/trips/${trip.name}`}>
+            {trips.map((tripWithThumbnail) => (
+              <Grid item xs={12} lg={6} key={tripWithThumbnail.tripData.name}>
+                <Link href={`/trips/${tripWithThumbnail.tripData.name}`}>
                   <TripPreviewCard
-                    name={trip.name}
-                    thumbnail={trip.thumbnail}
+                    trip={tripWithThumbnail.tripData}
+                    thumbnail={tripWithThumbnail.thumbnail}
                   />
                 </Link>
               </Grid>
@@ -45,7 +45,7 @@ const TripsOverviewPage: NextPage = ({
 export async function getStaticProps() {
   const promises = trips.map(async (trip) => {
     return {
-      name: trip.name,
+      tripData: trip,
       thumbnail: (await getTripThumbnail(trip.name)).at(0),
     };
   });
