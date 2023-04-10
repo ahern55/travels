@@ -20,7 +20,7 @@ export default function PhotoGallery({
     `https://res.cloudinary.com/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload/c_scale,w_720/${id}.${format}`;
 
   return (
-    <div className="mx-auto max-w-[1960px] p-4">
+    <div className="mx-auto min-h-[85vh] max-w-[1960px] p-4">
       {modalOpen && (
         <Modal
           index={photoIndex}
