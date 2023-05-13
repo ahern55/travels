@@ -179,7 +179,7 @@ export default function SharedModal({
               </button>
             </div>
             <div className="mt-2 flex items-center justify-center gap-2 rounded-full">
-              <p className="rounded-full bg-black/50 p-3 text-white">
+              <p className="rounded-full bg-black/50 p-3 text-xs text-white md:text-sm">
                 📍 {getImageLocationFromFolderPath(currentImage.folder)}
               </p>
             </div>
