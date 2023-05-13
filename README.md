@@ -1,31 +1,29 @@
-# Next.js & Cloudinary example app
+# My Travel Pictures!
 
-This example shows how to create an image gallery site using Next.js, [Cloudinary](https://cloudinary.com), and [Tailwind](https://tailwindcss.com).
+A photo gallery of the pictures I have taken while traveling!
 
-## Deploy your own
+## Live: [travels.jasonahern.com](https://travels.jasonahern.com)
 
-Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example) or view the demo [here](https://nextconf-images.vercel.app/)
+---
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/vercel/next.js/tree/canary/examples/with-cloudinary&project-name=nextjs-image-gallery&repository-name=with-cloudinary&env=NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME,CLOUDINARY_API_KEY,CLOUDINARY_API_SECRET,CLOUDINARY_FOLDER&envDescription=API%20Keys%20from%20Cloudinary%20needed%20to%20run%20this%20application.)
+## Services
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+### ☁️ [**Cloudinary**](https://cloudinary.com/) for storing the photos
 
-## How to use
+### 🚀 [**Vercel**](https://vercel.com/) for hosting
 
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init), [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/), or [pnpm](https://pnpm.io) to bootstrap the example::
+That's all! I am using the free tiers for both.
 
-```bash
- npx create-next-app --example with-cloudinary nextjs-image-gallery
-```
+---
 
-```bash
-yarn create next-app --example with-cloudinary nextjs-image-gallery
-```
+## Acknowledgements and Resources
 
-```bash
-pnpm create next-app --example with-cloudinary nextjs-image-gallery
-```
+I used Vercel's [Image Gallery Starter](https://vercel.com/templates/next.js/image-gallery-starter) to get started with this project! I've adapted and simplified it heavily to fit my interests, but it was a great place to start 😀
 
-## References
+Also, the styles are a bit messy now, using both Tailwind and MaterialUI... just doing my best 😅
 
-- Cloudinary API: https://cloudinary.com/documentation/transformation_reference
+---
+
+more documentation coming soon... maybe...
+
+feel free to reach out with any questions while I procrastinate the documentation!
