@@ -62,6 +62,7 @@ export default function SharedModal({
   });
 
   let currentImage = images ? images[index] : currentPhoto;
+  let aspectRatio = Number(currentImage.width) / Number(currentImage.height);
 
   return (
     <MotionConfig
@@ -76,7 +77,7 @@ export default function SharedModal({
       >
         {/* Main image */}
         <div className="h-97 w-full overflow-hidden">
-          <div className="relative flex aspect-[3/2] items-center justify-center">
+          <div className="relative flex aspect-[1/2] items-center justify-center">
             {!imageLoaded && <CircularProgress size={"5rem"} />}
             <AnimatePresence initial={false} custom={direction}>
               <motion.div
@@ -94,7 +95,7 @@ export default function SharedModal({
                   }/image/upload/c_scale,${navigation ? "w_1280" : "w_1920"}/${
                     currentImage.public_id
                   }.${currentImage.format}`}
-                  width={800}
+                  width={aspectRatio > 1 ? 900 : 500}
                   height={800}
                   priority
                   alt="Travel Image"
@@ -109,7 +110,7 @@ export default function SharedModal({
         <div className="absolute inset-0 mx-auto flex max-w-7xl items-center justify-center">
           {/* Buttons */}
           {imageLoaded && (
-            <div className="relative aspect-[3/2] max-h-full w-full">
+            <div className="relative aspect-[1/2] max-h-full w-full">
               {navigation && (
                 <>
                   {index > 0 && (
