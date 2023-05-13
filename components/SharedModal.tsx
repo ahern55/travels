@@ -15,6 +15,7 @@ import downloadPhoto from "../utils/images/downloadPhoto";
 import { range } from "../utils/range";
 import type { ImageProps, SharedModalProps } from "../utils/types";
 import useKeypress from "react-use-keypress";
+import { getImageLocationFromFolderPath } from "../utils/genericUtils";
 
 export default function SharedModal({
   index,
@@ -177,6 +178,11 @@ export default function SharedModal({
                     <ArrowUturnLeftIcon className="h-5 w-5" />
                   )}
                 </button>
+              </div>
+              <div className="mt-2 flex items-center justify-center gap-2 rounded-full">
+                <p className="rounded-full bg-black/50 p-3 text-white">
+                  📍 {getImageLocationFromFolderPath(currentImage.folder)}
+                </p>
               </div>
             </div>
           )}

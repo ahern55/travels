@@ -48,6 +48,7 @@ const getReducedImagesFromCloudinaryResults = async (results: any) => {
   for (let result of results.resources) {
     reducedResults.push({
       id: i,
+      folder: result.folder,
       height: result.height,
       width: result.width,
       public_id: result.public_id,
