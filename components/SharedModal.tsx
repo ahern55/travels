@@ -62,6 +62,7 @@ export default function SharedModal({
   });
 
   let currentImage = images ? images[index] : currentPhoto;
+  let aspectRatio = Number(currentImage.width) / Number(currentImage.height);
 
   return (
     <MotionConfig
@@ -94,7 +95,7 @@ export default function SharedModal({
                   }/image/upload/c_scale,${navigation ? "w_1280" : "w_1920"}/${
                     currentImage.public_id
                   }.${currentImage.format}`}
-                  width={500}
+                  width={aspectRatio > 1 ? 900 : 500}
                   height={800}
                   priority
                   alt="Travel Image"
