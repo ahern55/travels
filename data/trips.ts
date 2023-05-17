@@ -46,6 +46,7 @@ const trips: tripData[] = [
     name: "laos",
     icon: "🇱🇦",
     startDate: new Date(2023, 4, 4).toString(),
+    endDate: new Date(2023, 4, 17).toString(),
   },
 ];
 
