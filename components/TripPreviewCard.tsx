@@ -14,12 +14,17 @@ import theme from "../styles/muiStyles";
 declare type TripCardProps = {
   trip: tripData;
   thumbnail: ImageProps;
+  showEndDate?: boolean;
 };
 
 const getImageSource = (id: string, format: string) =>
   `https://res.cloudinary.com/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload/c_scale,w_240,h_160/${id}.${format}`;
 
-export default function TripPreviewCard({ trip, thumbnail }: TripCardProps) {
+export default function TripPreviewCard({
+  trip,
+  thumbnail,
+  showEndDate = false,
+}: TripCardProps) {
   const mobile = useMediaQuery(theme.breakpoints.down("sm"));
 
   const formatDate = (dateString: string) => {
@@ -55,8 +60,10 @@ export default function TripPreviewCard({ trip, thumbnail }: TripCardProps) {
           </Grid>
           <Grid item xs={12}>
             <Typography component="div" variant="h6" color="white">
-              {formatDate(trip.startDate)} →{" "}
-              {trip.endDate ? formatDate(trip.endDate) : "Present"}
+              {formatDate(trip.startDate)}
+              {showEndDate && (
+                <> → {trip.endDate ? formatDate(trip.endDate) : "Present"}</>
+              )}
             </Typography>
           </Grid>
         </Grid>

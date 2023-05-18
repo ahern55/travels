@@ -29,6 +29,7 @@ const TripsOverviewPage: NextPage = ({
                   <TripPreviewCard
                     trip={tripWithThumbnail.tripData}
                     thumbnail={tripWithThumbnail.thumbnail}
+                    showEndDate
                   />
                 </Link>
               </Grid>
