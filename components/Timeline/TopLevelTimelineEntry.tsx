@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import NestedTimelineEntry from "./NestedTimelineEntry";
 import { tripData } from "../../data/trips";
 import moment from "moment";
@@ -9,14 +9,18 @@ declare type TimelineEntryProps = {
   trip: tripData;
   thumbnail: ImageProps;
   index: number;
+  allCollapsedTime: number;
 };
 
 const TopLevelTimelineEntry = ({
   trip,
   thumbnail,
   index,
+  allCollapsedTime,
 }: TimelineEntryProps) => {
   const [expanded, setExpanded] = useState(false);
+
+  useEffect(() => setExpanded(false), [allCollapsedTime]);
 
   const TripPreviewCardWithProps = () => (
     <TripPreviewCard
@@ -69,7 +73,7 @@ const TopLevelTimelineEntry = ({
             <>
               {trip.cities.map((city) => (
                 <NestedTimelineEntry
-                  key={city.name}
+                  key={city.name + city.startDate}
                   parentLeftOfTimeline={index % 2 == 0}
                   {...city}
                 />

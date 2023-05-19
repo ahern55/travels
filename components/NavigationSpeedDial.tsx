@@ -16,11 +16,6 @@ const actions = [
     name: "Trips",
     route: "/trips",
   },
-  {
-    icon: "⏱️",
-    name: "Timeline",
-    route: "/timeline",
-  },
 ];
 
 const speedDialStyleProps: SxProps = {

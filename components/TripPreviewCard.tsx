@@ -61,7 +61,7 @@ export default function TripPreviewCard({
       />
       <Box sx={{ display: "flex", flexDirection: "column" }}>
         <Grid container p={0.5}>
-          <Grid item xs={12}  pl={2}>
+          <Grid item xs={12} pl={2}>
             <Typography component="div" variant="h6" color="white">
               {capitalizeWordFirstLetter(trip.name)} {trip.icon}
             </Typography>
@@ -76,10 +76,10 @@ export default function TripPreviewCard({
           <Grid item xs={12} pl={0.5}>
             <Typography component="div" variant="h6" color="white">
               {!timelineMode && (
-                <>
+                <div className="pl-3">
                   {formatDate(trip.startDate)} →{" "}
                   {trip.endDate ? formatDate(trip.endDate) : "Present"}
-                </>
+                </div>
               )}
               {timelineMode && (
                 <>

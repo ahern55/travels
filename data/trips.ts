@@ -66,10 +66,6 @@ const trips: tripData[] = [
       },
       {
         name: "tokyo",
-        startDate: new Date(2023, 0, 10).toString(),
-      },
-      {
-        name: "tokyo",
         startDate: new Date(2023, 1, 1).toString(),
       },
       {
