@@ -6,20 +6,33 @@ import { capitalizeWordFirstLetter } from "../utils/genericUtils";
 import Image from "next/image";
 import { ImageProps } from "../utils/types";
 import { tripData } from "../data/trips";
-import { Grid } from "@mui/material";
+import { Grid, IconButton, Tooltip } from "@mui/material";
 import moment from "moment";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import theme from "../styles/muiStyles";
+import UnfoldMoreIcon from "@mui/icons-material/UnfoldMore";
+import PhotoIcon from "@mui/icons-material/Photo";
+import Link from "next/link";
 
 declare type TripCardProps = {
   trip: tripData;
   thumbnail: ImageProps;
+  timelineMode?: boolean;
+  timelineProps?: {
+    expanded: boolean;
+    expandToggleClicked: () => void;
+  };
 };
 
 const getImageSource = (id: string, format: string) =>
   `https://res.cloudinary.com/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload/c_scale,w_240,h_160/${id}.${format}`;
 
-export default function TripPreviewCard({ trip, thumbnail }: TripCardProps) {
+export default function TripPreviewCard({
+  trip,
+  thumbnail,
+  timelineMode = false,
+  timelineProps = null,
+}: TripCardProps) {
   const mobile = useMediaQuery(theme.breakpoints.down("sm"));
 
   const formatDate = (dateString: string) => {
@@ -47,16 +60,48 @@ export default function TripPreviewCard({ trip, thumbnail }: TripCardProps) {
         height={1}
       />
       <Box sx={{ display: "flex", flexDirection: "column" }}>
-        <Grid container p={0.5} pl={2}>
-          <Grid item xs={12}>
+        <Grid container p={0.5}>
+          <Grid item xs={12} pl={2}>
             <Typography component="div" variant="h6" color="white">
               {capitalizeWordFirstLetter(trip.name)} {trip.icon}
             </Typography>
           </Grid>
-          <Grid item xs={12}>
+          {timelineMode && mobile && (
+            <Grid item xs={12} pl={2}>
+              <Typography component="div" variant="h6" color="white">
+                {formatDate(trip.startDate)}
+              </Typography>
+            </Grid>
+          )}
+          <Grid item xs={12} pl={0.5}>
             <Typography component="div" variant="h6" color="white">
-              {formatDate(trip.startDate)} →{" "}
-              {trip.endDate ? formatDate(trip.endDate) : "Present"}
+              {!timelineMode && (
+                <div className="pl-3">
+                  {formatDate(trip.startDate)} →{" "}
+                  {trip.endDate ? formatDate(trip.endDate) : "Present"}
+                </div>
+              )}
+              {timelineMode && (
+                <>
+                  <Tooltip title={timelineProps?.expanded ? "Hide" : "Expand"}>
+                    <IconButton
+                      color="secondary"
+                      onClick={timelineProps.expandToggleClicked}
+                    >
+                      <UnfoldMoreIcon
+                        className={timelineProps?.expanded ? "rotate-90" : ""}
+                      />
+                    </IconButton>
+                  </Tooltip>
+                  <Tooltip title="View Photos">
+                    <Link href={`/trips/${trip.name}`}>
+                      <IconButton color="secondary">
+                        <PhotoIcon />
+                      </IconButton>
+                    </Link>
+                  </Tooltip>
+                </>
+              )}
             </Typography>
           </Grid>
         </Grid>
