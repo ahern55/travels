@@ -60,20 +60,20 @@ export default function TripPreviewCard({
         height={1}
       />
       <Box sx={{ display: "flex", flexDirection: "column" }}>
-        <Grid container p={0.5} pl={2}>
-          <Grid item xs={12}>
+        <Grid container p={0.5}>
+          <Grid item xs={12}  pl={2}>
             <Typography component="div" variant="h6" color="white">
               {capitalizeWordFirstLetter(trip.name)} {trip.icon}
             </Typography>
           </Grid>
           {timelineMode && mobile && (
-            <Grid item xs={12}>
+            <Grid item xs={12} pl={2}>
               <Typography component="div" variant="h6" color="white">
                 {formatDate(trip.startDate)}
               </Typography>
             </Grid>
           )}
-          <Grid item xs={12}>
+          <Grid item xs={12} pl={0.5}>
             <Typography component="div" variant="h6" color="white">
               {!timelineMode && (
                 <>
