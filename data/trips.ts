@@ -3,6 +3,7 @@ export declare type tripData = {
   icon: string;
   startDate: string;
   endDate?: string;
+  thumbnailIndex?: number;
   cities?: {
     name: string;
     startDate: string;
@@ -247,6 +248,18 @@ const trips: tripData[] = [
       {
         name: "vientiane",
         startDate: new Date(2023, 4, 15).toString(),
+      },
+    ],
+  },
+  {
+    name: "thailand",
+    icon: "🇹🇭",
+    startDate: new Date(2023, 4, 17).toString(),
+    thumbnailIndex: 1,
+    cities: [
+      {
+        name: "bangkok",
+        startDate: new Date(2023, 4, 17).toString(),
       },
     ],
   },

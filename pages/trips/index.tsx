@@ -31,7 +31,7 @@ const TripsOverviewPage: NextPage = ({
         <title>Trips</title>
       </Head>
       <main>
-        <div className="flex w-full items-center pt-4 md:justify-between">
+        <div className="flex w-full items-center justify-between pt-4">
           <div className="w-1/2 px-2 text-right">
             <h3
               className={
@@ -70,7 +70,9 @@ export async function getStaticProps() {
   const promises = trips.map(async (trip) => {
     return {
       tripData: trip,
-      thumbnail: (await getTripThumbnail(trip.name)).at(0),
+      thumbnail: (await getTripThumbnail(trip.name)).at(
+        trip.thumbnailIndex ?? 0
+      ),
     };
   });
 

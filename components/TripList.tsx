@@ -14,7 +14,15 @@ const TripList = ({
     <Box sx={{ display: "flex", alignItems: "center", p: 2, pb: 10 }}>
       <Grid container spacing={0}>
         {trips.map((tripWithThumbnail) => (
-          <Grid item xs={12} lg={6} key={tripWithThumbnail.tripData.name}>
+          <Grid
+            item
+            xs={12}
+            lg={6}
+            key={
+              tripWithThumbnail.tripData.name +
+              tripWithThumbnail.tripData.startDate
+            }
+          >
             <Link href={`/trips/${tripWithThumbnail.tripData.name}`}>
               <TripPreviewCard
                 trip={tripWithThumbnail.tripData}
