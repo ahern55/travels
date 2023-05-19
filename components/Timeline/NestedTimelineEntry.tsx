@@ -1,18 +1,27 @@
 import { useMediaQuery } from "@mui/material";
 import theme from "../../styles/muiStyles";
+import moment from "moment";
+import { capitalizeAllWords } from "../../utils/genericUtils";
 
 declare type NestedTimelineEntryProps = {
   name: string;
-  date: string;
+  startDate: string;
   parentLeftOfTimeline?: boolean;
 };
 
 const NestedTimelineEntry = ({
   name,
-  date,
+  startDate,
   parentLeftOfTimeline = false,
 }: NestedTimelineEntryProps) => {
   const mobile = useMediaQuery(theme.breakpoints.down("md"));
+
+  const formatDate = (dateString: string) => {
+    return moment(dateString).format("D MMMM");
+  };
+
+  const dateFormatted = formatDate(startDate);
+  const nameFormatted = capitalizeAllWords(name);
 
   return (
     <>
@@ -23,7 +32,7 @@ const NestedTimelineEntry = ({
             <div className="spacer w-12 md:hidden"></div>
             <div className="order-1 w-full px-6 py-4">
               <h3 className="text-l font-bold text-white">
-                {name}: {date}
+                {nameFormatted}: {dateFormatted}
               </h3>
             </div>
           </>
@@ -32,12 +41,12 @@ const NestedTimelineEntry = ({
           <>
             <div className="order-1 w-6/12 px-6 py-4 text-right">
               <h3 className="text-l font-bold text-white">
-                {parentLeftOfTimeline ? name : date}
+                {parentLeftOfTimeline ? nameFormatted : dateFormatted}
               </h3>
             </div>
             <div className="order-1 w-6/12 px-6 py-4">
               <h3 className="text-l font-bold text-white">
-                {parentLeftOfTimeline ? date : name}
+                {parentLeftOfTimeline ? dateFormatted : nameFormatted}
               </h3>
             </div>
           </>

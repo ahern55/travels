@@ -65,16 +65,17 @@ const TopLevelTimelineEntry = ({
 
       {expanded && (
         <>
-          <NestedTimelineEntry
-            parentLeftOfTimeline={index % 2 == 0}
-            name="Tokyo"
-            date="9 January"
-          />
-          <NestedTimelineEntry
-            parentLeftOfTimeline={index % 2 == 0}
-            name="Kyoto"
-            date="17 January"
-          />
+          {trip.cities && (
+            <>
+              {trip.cities.map((city) => (
+                <NestedTimelineEntry
+                  key={city.name}
+                  parentLeftOfTimeline={index % 2 == 0}
+                  {...city}
+                />
+              ))}
+            </>
+          )}
         </>
       )}
     </>
