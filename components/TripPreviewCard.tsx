@@ -6,15 +6,22 @@ import { capitalizeWordFirstLetter } from "../utils/genericUtils";
 import Image from "next/image";
 import { ImageProps } from "../utils/types";
 import { tripData } from "../data/trips";
-import { Grid } from "@mui/material";
+import { Grid, IconButton, Tooltip } from "@mui/material";
 import moment from "moment";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import theme from "../styles/muiStyles";
+import UnfoldMoreIcon from "@mui/icons-material/UnfoldMore";
+import PhotoIcon from "@mui/icons-material/Photo";
+import Link from "next/link";
 
 declare type TripCardProps = {
   trip: tripData;
   thumbnail: ImageProps;
-  showEndDate?: boolean;
+  timelineMode?: boolean;
+  timelineProps?: {
+    expanded: boolean;
+    expandToggleClicked: () => void;
+  };
 };
 
 const getImageSource = (id: string, format: string) =>
@@ -23,7 +30,8 @@ const getImageSource = (id: string, format: string) =>
 export default function TripPreviewCard({
   trip,
   thumbnail,
-  showEndDate = false,
+  timelineMode = false,
+  timelineProps = null,
 }: TripCardProps) {
   const mobile = useMediaQuery(theme.breakpoints.down("sm"));
 
@@ -58,11 +66,41 @@ export default function TripPreviewCard({
               {capitalizeWordFirstLetter(trip.name)} {trip.icon}
             </Typography>
           </Grid>
+          {timelineMode && mobile && (
+            <Grid item xs={12}>
+              <Typography component="div" variant="h6" color="white">
+                {formatDate(trip.startDate)}
+              </Typography>
+            </Grid>
+          )}
           <Grid item xs={12}>
             <Typography component="div" variant="h6" color="white">
-              {formatDate(trip.startDate)}
-              {showEndDate && (
-                <> → {trip.endDate ? formatDate(trip.endDate) : "Present"}</>
+              {!timelineMode && (
+                <>
+                  {formatDate(trip.startDate)} →{" "}
+                  {trip.endDate ? formatDate(trip.endDate) : "Present"}
+                </>
+              )}
+              {timelineMode && (
+                <>
+                  <Tooltip title={timelineProps?.expanded ? "Hide" : "Expand"}>
+                    <IconButton
+                      color="secondary"
+                      onClick={timelineProps.expandToggleClicked}
+                    >
+                      <UnfoldMoreIcon
+                        className={timelineProps?.expanded ? "rotate-90" : ""}
+                      />
+                    </IconButton>
+                  </Tooltip>
+                  <Tooltip title="View Photos">
+                    <Link href={`/trips/${trip.name}`}>
+                      <IconButton color="secondary">
+                        <PhotoIcon />
+                      </IconButton>
+                    </Link>
+                  </Tooltip>
+                </>
               )}
             </Typography>
           </Grid>

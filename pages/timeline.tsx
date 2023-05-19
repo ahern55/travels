@@ -26,6 +26,7 @@ const Timeline: NextPage = ({
             <div className="border-2-2 right-9/10 absolute h-full translate-x-1/2 border border-gray-100 border-opacity-60 md:right-1/2"></div>
             {trips.map((tripWithThumbnail, index) => (
               <TopLevelTimelineEntry
+                key={tripWithThumbnail.tripData.name}
                 index={index}
                 trip={tripWithThumbnail.tripData}
                 thumbnail={tripWithThumbnail.thumbnail}
