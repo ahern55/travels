@@ -261,6 +261,18 @@ const trips: tripData[] = [
         name: "bangkok",
         startDate: new Date(2023, 4, 17).toString(),
       },
+      {
+        name: "phuket",
+        startDate: new Date(2023, 4, 22).toString(),
+      },
+      {
+        name: "ko phi phi",
+        startDate: new Date(2023, 4, 24).toString(),
+      },
+      {
+        name: "ko lanta",
+        startDate: new Date(2023, 4, 26).toString(),
+      },
     ],
   },
 ];
