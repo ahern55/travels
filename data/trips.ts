@@ -281,6 +281,21 @@ const trips: tripData[] = [
         name: "ko phangan",
         startDate: new Date(2023, 5, 3).toString(),
       },
+      {
+        name: "ko tao",
+        startDate: new Date(2023, 5, 6).toString(),
+      },
+    ],
+  },
+  {
+    name: "malaysia",
+    icon: "🇲🇾",
+    startDate: new Date(2023, 5, 15).toString(),
+    cities: [
+      {
+        name: "penang",
+        startDate: new Date(2023, 5, 15).toString(),
+      },
     ],
   },
 ];
