@@ -255,6 +255,7 @@ const trips: tripData[] = [
     name: "thailand",
     icon: "🇹🇭",
     startDate: new Date(2023, 4, 17).toString(),
+    endDate: new Date(2023, 5, 15).toString(),
     thumbnailIndex: 1,
     cities: [
       {
