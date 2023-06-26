@@ -83,16 +83,20 @@ export default function TripPreviewCard({
               )}
               {timelineMode && (
                 <>
-                  <Tooltip title={timelineProps?.expanded ? "Hide" : "Expand"}>
-                    <IconButton
-                      color="secondary"
-                      onClick={timelineProps.expandToggleClicked}
+                  {trip.cities && (
+                    <Tooltip
+                      title={timelineProps?.expanded ? "Hide" : "Expand"}
                     >
-                      <UnfoldMoreIcon
-                        className={timelineProps?.expanded ? "rotate-90" : ""}
-                      />
-                    </IconButton>
-                  </Tooltip>
+                      <IconButton
+                        color="secondary"
+                        onClick={timelineProps.expandToggleClicked}
+                      >
+                        <UnfoldMoreIcon
+                          className={timelineProps?.expanded ? "rotate-90" : ""}
+                        />
+                      </IconButton>
+                    </Tooltip>
+                  )}
                   <Tooltip title="View Photos">
                     <Link href={`/trips/${trip.name}`}>
                       <IconButton color="secondary">
