@@ -292,6 +292,7 @@ const trips: tripData[] = [
     name: "malaysia",
     icon: "🇲🇾",
     startDate: new Date(2023, 5, 15).toString(),
+    endDate: new Date(2023, 5, 25).toString(),
     cities: [
       {
         name: "penang",
@@ -305,7 +306,16 @@ const trips: tripData[] = [
         name: "kuala lumpur",
         startDate: new Date(2023, 5, 20).toString(),
       },
+      {
+        name: "melaka",
+        startDate: new Date(2023, 5, 24).toString(),
+      },
     ],
+  },
+  {
+    name: "singapore",
+    icon: "🇸🇬",
+    startDate: new Date(2023, 5, 25).toString(),
   },
 ];
 
