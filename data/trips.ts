@@ -316,6 +316,7 @@ const trips: tripData[] = [
     name: "singapore",
     icon: "🇸🇬",
     startDate: new Date(2023, 5, 25).toString(),
+    endDate: new Date(2023, 5, 27).toString(),
   },
 ];
 
